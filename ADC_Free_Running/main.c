@@ -33,7 +33,7 @@ uint16_t adcVal;
 void ADC0_init(void);
 uint16_t ADC0_read(void);
 void ADC0_start(void);
-bool ADC0_conersionDone(void);
+bool ADC0_conversionDone(void);
 
 void ADC0_init(void)
 {
@@ -71,7 +71,7 @@ void ADC0_start(void)
     ADC0.COMMAND = ADC_STCONV_bm;
 }
 
-bool ADC0_conersionDone(void)
+bool ADC0_conversionDone(void)
 {
     return (ADC0.INTFLAGS & ADC_RESRDY_bm);
 }
@@ -83,7 +83,7 @@ int main(void)
     
     while(1)
     {
-        if (ADC0_conersionDone())
+        if (ADC0_conversionDone())
         {
             adcVal = ADC0_read();
             /* In FreeRun mode, the next conversion starts automatically */
